@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            user-select: none;
+        }
+        
+        img[src=""] {
+            opacity: 0;
+        }
+        
+        .active {
+            background-color: #5965DB !important;
+        }
+        
+        .user_active {
+            background-color: #F8FAFD;
+        }
+        
+        #left_container {
+            float: left;
+            width: 14vw;
+            min-width: 160px;
+            height: 100vh;
+            background-color: rgb(30, 41, 51);
+        }
+        
+        #logo {
+            height: 7vh;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f8e8e8;
+            font-size: 16px;
+            border-bottom: 1px solid #ffffff;
+            user-select: none;
+        }
+        
+        #user {
+            border-bottom: 1px solid #ffffff;
+            height: 63px;
+            height: 9vh;
+            display: flex;
+            align-items: center;
+            user-select: none;
+        }
+        
+        #user>img {
+            float: left;
+            margin: 0 0.4vw 0 1.6vw;
+            width: 27px;
+            height: 27px;
+        }
+        
+        #user>div>div:nth-child(1) {
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        #user>div>div:nth-child(2) {
+            color: #7E8792;
+            font-size: 12px;
+        }
+        
+        #list {
+            border-bottom: 1px solid #fff;
+            padding-bottom: 1vh;
+        }
+        
+        .item {
+            padding: 2vh 0.8vw 0 0.8vw;
+            margin-bottom: 1vh;
+            user-select: none;
+        }
+        
+        .item>div {
+            color: #7E8792;
+            font-size: 12px;
+            padding: 0 0.8vw;
+            margin-bottom: 0.5vh;
+        }
+        
+        .item>ul>li {
+            list-style: none;
+            overflow: hidden;
+            padding: 1vh 0.8vw;
+            margin-bottom: 0.5vh;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+        
+        .item>ul>li:hover {
+            background-color: #a1a7e0;
+        }
+        
+        .item li>img {
+            float: left;
+            margin-right: 1vw;
+            width: 13px;
+            height: 13px;
+        }
+        
+        .item li>div {
+            float: left;
+            color: #fff;
+            font-size: 12px;
+        }
+        /*  */
+        
+        #right_container {
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #top {
+            width: 100%;
+            height: 7vh;
+            border-bottom: 1px solid #E6E6E6;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            justify-content: space-around;
+        }
+        
+        #top>div:nth-child(1) {
+            display: flex;
+            align-items: center;
+        }
+        
+        #top>div:nth-child(2) {
+            display: flex;
+            align-items: center;
+            border: 1px solid #E6E6E6;
+            height: 4vh;
+            box-sizing: border-box;
+            padding: 0 1vw;
+        }
+        
+        #top>div>div:nth-child(2) {
+            margin: 0 10px;
+        }
+        
+        #top>div>div:nth-child(3) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 50%;
+        }
+        
+        #top>div>div:nth-child(3)>img {
+            width: 8px;
+            height: 3px;
+            display: block;
+        }
+        
+        #icon {
+            float: left;
+            height: 4vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E6E6E6;
+            border-right: 0;
+            box-sizing: border-box;
+            padding: 0 0.5vw;
+        }
+        
+        #icon>img {
+            width: 1vw;
+            height: 2vh;
+        }
+        
+        #top input {
+            outline: none;
+            border: 1px solid #E6E6E6;
+            border-left: 0;
+            height: 4vh;
+            padding: 0 0.3vw;
+            line-height: 4vh;
+            box-sizing: border-box;
+            width: 60vw;
+            font-size: 12px;
+        }
+        
+        #center {
+            height: 93vh;
+        }
+        
+        #user_list {
+            width: 320px;
+            height: 93vh;
+            float: left;
+            background-color: #fff;
+            border-right: 1px solid #E6E6E6;
+        }
+        
+        #user_list>div:nth-child(1) {
+            height: 6vh;
+            border-bottom: 1px solid #E6E6E6;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 25px;
+            align-items: center;
+        }
+        
+        #user_list>div:nth-child(1)>div:nth-child(1) {
+            font-size: 14px;
+            font-weight: 600;
+            user-select: none;
+        }
+        
+        #user_list>div:nth-child(1)>div:nth-child(2) {
+            font-size: 12px;
+            padding: 0.5vh 30px;
+            background-color: #EBEDFB;
+            color: #a23eff;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        #user_list>div:nth-child(2) {
+            overflow: hidden auto;
+            height: 87vh;
+        }
+        
+        .user_massage {
+            height: 11vh;
+            border-bottom: 1px solid #E6E6E6;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+        
+        .user_massage:hover {
+            background-color: #bdbec48c;
+        }
+        
+        .user_img>img {
+            display: block;
+            width: 30px;
+            height: 30px;
+            float: left;
+        }
+        
+        .user_img>img:nth-child(1) {
+            transform: translate(30px, 2.7vh);
+        }
+        
+        .user_img>img:nth-child(2) {
+            transform: translate(15px, 4.2vh);
+        }
+        
+        .user_massage>div:nth-child(2) {
+            float: left;
+            color: deeppink;
+            transform: translate(27px, 2vh);
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+        }
+        
+        .user_massage>div:nth-child(2)>div:nth-child(2) {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user_massage>div:nth-child(3) {
+            transform: translate(27px, 2vh);
+            float: left;
+            width: 160px;
+            font-size: 12px;
+            height: 32px;
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .user_massage>div:nth-child(4) {
+            float: left;
+            transform: translate(48px, 3.4vh);
+        }
+        
+        #message {
+            min-width: 400px;
+            height: 93vh;
+        }
+        
+        #message>div:nth-child(1) {
+            height: 6vh;
+            border-bottom: 1px solid #E6E6E6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+        
+        #massage_friend {
+            display: flex;
+            align-items: center;
+        }
+        
+        #massage_friend>div {
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            margin: 0 8px;
+            text-align: center;
+            user-select: none;
+        }
+        
+        #massage_friend>img {
+            width: 24px;
+            height: 24px;
+            margin: 0 5px;
+        }
+        
+        #message_area {
+            height: 80vh;
+            overflow: hidden auto;
+            border-bottom: 1px solid #E6E6E6;
+            background-color: #F8FAFD;
+        }
+        
+        .friends_message {
+            margin-top: 2vh;
+            padding: 0 1vw;
+            float: left;
+            clear: both;
+        }
+        
+        .friends_message>div:nth-child(1) {
+            height: 27px;
+            line-height: 27px;
+        }
+        
+        .friends_message>div:nth-child(1)>img {
+            float: left;
+            width: 27px;
+            height: 27px;
+            margin-right: 15px;
+        }
+        
+        .friends_message>div:nth-child(1)>div:nth-child(2) {
+            float: left;
+        }
+        
+        .friends_message>div:nth-child(1)>div:nth-child(3) {
+            float: right;
+            font-size: 12px;
+            color: #a7a4a4;
+        }
+        
+        .friends_message>div:nth-child(2) {
+            padding: 8px 15px;
+            background-color: #5965DB;
+            margin-top: 10px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+            word-wrap: break-word;
+            word-break: break-all;
+            float: left;
+            max-width: 36vw;
+        }
+        
+        .my_message {
+            margin-top: 2vh;
+            padding: 0 1vw;
+            float: right;
+            clear: both;
+        }
+        
+        .my_message>div:nth-child(1) {
+            height: 27px;
+            line-height: 27px;
+        }
+        
+        .my_message>div:nth-child(1)>div {
+            float: right;
+            font-size: 12px;
+            color: #a7a4a4;
+        }
+        
+        .my_message>div:nth-child(2) {
+            padding: 8px 15px;
+            background-color: #EAEFF4;
+            margin-top: 10px;
+            border-radius: 4px;
+            color: #000;
+            font-size: 14px;
+            float: right;
+            word-wrap: break-word;
+            word-break: break-all;
+            max-width: 36vw;
+        }
+        
+        #text_area {
+            height: 7vh;
+            overflow: hidden;
+        }
+        
+        #text_area input {
+            border: 0;
+            outline: 0;
+            width: 70%;
+            height: 100%;
+            padding-left: 30px;
+            float: left;
+        }
+        
+        #text_area div {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            flex-direction: row-reverse;
+            padding-right: 40px;
+        }
+        
+        #text_area img {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        
+        #count {
+            position: absolute;
+            right: 15px;
+            color: #6b7ce6;
+            background: url(./image/Oval.png) center;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            background-size: 15px 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left_container">
+        <div id="logo">LOGO示例</div>
+        <div id="user">
+            <img src="./image/01.png" alt="图片加载失败" />
+            <div>
+                <div>划水王一号</div>
+                <div>007员工</div>
+            </div>
+        </div>
+        <div id="list">
+            <div class="item">
+                <div>菜单</div>
+                <ul>
+                    <li>
+                        <img src="./image/02.png" alt="">
+                        <div>仪表盘</div>
+                    </li>
+                    <li>
+                        <img src="./image/03.png" alt="">
+                        <div>大佬列表</div>
+                    </li>
+                    <li>
+                        <img src="./image/04.png" alt="">
+                        <div>文件</div>
+                    </li>
+                    <li class="active">
+                        <img src="./image/05.png" alt="">
+                        <div>水群</div>
+                        <span id="count">6</span> </li>
+                    <li>
+                        <img src="./image/06.png" alt="">
+                        <div>项目</div>
+                    </li>
+                    <li>
+                        <img src="./image/07.png" alt="">
+                        <div>日程表</div>
+                    </li>
+                    <li>
+                        <img src="./image/08.png" alt="">
+                        <div>支付方式</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="item">
+                <div>帮助</div>
+                <ul>
+                    <li>
+                        <img src="./image/02.png" alt="">
+                        <div>需要急救？</div>
+                    </li>
+                    <li>
+                        <img src="./image/03.png" alt="">
+                        <div>联系120</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="item">
+                <div>设置</div>
+                <ul>
+                    <li>
+                        <img src="./image/02.png" alt="">
+                        <div>账号设置</div>
+                    </li>
+                    <li>
+                        <img src="./image/03.png" alt="">
+                        <div>黑化模式</div>
+                    </li>
+                    <li>
+                        <img src="./image/04.png" alt="">
+                        <div>禁止退出</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div id="right_container">
+        <div id="top">
+            <div>
+                <div id="icon">
+                    <img src="./image/14.png" alt="">
+                </div>
+                <input type="text" placeholder="请输入关键词" />
+            </div>
+            <div>
+                <img src="./image/15.png" alt="图片加载失败">
+                <div>English</div>
+                <div>
+                    <img src="./image/16.png" alt="">
+                    <img src="./image/17.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="center">
+            <div id="user_list">
+                <div>
+                    <div>用户列表</div>
+                    <div>新消息</div>
+                </div>
+                <div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/1.png" alt="">
+                            <img src="./image/user/2.png" alt="">
+                        </div>
+                        <div>
+                            <div>名称示例</div>
+                            <div style="font-size: 12px;">4:01PM</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+                            <img src="./image/29.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="user_massage user_active">
+
+                        <div class="user_img">
+                            <img src="./image/user/3.png" alt="">
+                            <img src="./image/user/4.png" alt="">
+                        </div>
+                        <div>
+                            <div>名称示例</div>
+                            <div style="font-size: 12px;">3:45PM</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+                        </div>
+                        <span style="
+                        position: absolute;
+                        left: 0;
+                        display: block;
+                        width: 5px;
+                        height: 100%;
+                        background-color: #5965DB;
+                        "></span>
+                    </div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/5.png" alt="">
+                            <img src="./image/user/6.png" alt="">
+                        </div>
+                        <div>
+                            <div>新项目</div>
+                            <div style="font-size: 12px;">昨天</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+                            <img src="./image/27.png" alt="">
+                        </div>
+                    </div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/7.png" alt="">
+                            <img src="./image/user/8.png" alt="">
+                        </div>
+                        <div>
+                            <div>进度更新</div>
+                            <div style="font-size: 12px;">5天前</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/9.png" alt="">
+                            <img src="" />
+                        </div>
+                        <div>
+                            <div>工作期望</div>
+                            <div style="font-size: 12px;">1周前</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+                            <img src="./image/26.png" alt="">
+                        </div>
+                    </div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/10.png" alt="">
+                            <img src="./image/user/11.png" alt="">
+                        </div>
+                        <div>
+                            <div>第一个项目</div>
+                            <div style="font-size: 12px;">一年前</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+                            <img src="./image/26.png" alt="">
+                        </div>
+                    </div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/12.png" alt="">
+                            <img src="./image/user/13.png" alt="">
+                        </div>
+                        <div>
+                            <div>新工作机会</div>
+                            <div style="font-size: 12px;">十年前</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+                            <img src="./image/25.png" alt="">
+                        </div>
+                    </div>
+                    <div class="user_massage">
+                        <div class="user_img">
+                            <img src="./image/user/14.png" alt="">
+                            <img src="" />
+                        </div>
+
+                        <div>
+                            <div>恭喜啦</div>
+                            <div style="font-size: 12px;">10年后</div>
+                        </div>
+                        <div>你现在可以访问试试看,虽然访问了啥也没有但是就是想试试看</div>
+                        <div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="message">
+                <div>
+                    <div>新团队成员</div>
+                    <div id="massage_friend">
+                        <img src="./image/user/1.png" alt="">
+                        <img src="./image/user/2.png" alt="">
+                        <img src="./image/user/3.png" alt="">
+                        <img src="./image/user/4.png" alt="">
+                        <img src="./image/18.png" alt="">
+                        <div>|</div>
+                        <img src="./image/19.png" alt="" style="width: 15px;height: 15px;">
+                        <img src="./image/20.png" alt="" style="width: 15px;height: 15px;">
+                        <img src="./image/21.png" alt="" style="width: 15px;height: 15px;">
+                    </div>
+                </div>
+                <div id="message_area">
+                    <div class="friends_message">
+                        <div>
+                            <img src="./image/user/1.png" alt="" />
+                            <div>名字示例</div>
+                            <div>9:52AM</div>
+                        </div>
+                        <div style="clear: both;">我告诉你一件事</div>
+                    </div>
+                    <div class="my_message">
+                        <div>
+                            <div>11:06AM</div>
+                        </div>
+                        <div style="clear: both;">有话快讲</div>
+                    </div>
+                    <div class="friends_message">
+                        <div>
+                            <img src="./image/user/1.png" alt="" />
+                            <div>名字示例</div>
+                            <div>9:52AM</div>
+                        </div>
+                        <div style="clear: both;">蓝山工作室给了我一个机会</div>
+                    </div>
+                    <div class="my_message">
+                        <div>
+                            <div>11:06AM</div>
+                        </div>
+                        <div style="clear: both;">我为你感到高兴</div>
+                    </div>
+                    <div class="friends_message">
+                        <div>
+                            <img src="./image/user/1.png" alt="" />
+                            <div>名字示例</div>
+                            <div>9:52AM</div>
+                        </div>
+                        <div style="clear: both;">蓝山是个好地方</div>
+                    </div>
+                    <div class="friends_message">
+                        <div>
+                            <img src="./image/user/1.png" alt="" />
+                            <div>名字示例</div>
+                            <div>9:52AM</div>
+                        </div>
+                        <div style="clear: both;">我爱你</div>
+                    </div>
+                </div>
+                <div id="text_area">
+                    <input type="text" placeholder="在这里输入内容..." />
+                    <div>
+                        <img src="./image/24.png" alt="">
+                        <img src="./image/23.png" alt="">
+                        <img src="./image/22.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
